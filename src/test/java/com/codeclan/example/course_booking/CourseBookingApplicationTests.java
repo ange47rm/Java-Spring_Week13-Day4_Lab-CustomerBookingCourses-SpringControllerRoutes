@@ -1,6 +1,8 @@
 package com.codeclan.example.course_booking;
 
+import com.codeclan.example.course_booking.models.Booking;
 import com.codeclan.example.course_booking.models.Customer;
+import com.codeclan.example.course_booking.repositories.BookingRepository;
 import com.codeclan.example.course_booking.repositories.CourseRepository;
 import com.codeclan.example.course_booking.repositories.CustomerRepository;
 import org.junit.jupiter.api.Test;
@@ -18,6 +20,9 @@ class CourseBookingApplicationTests {
 
 	@Autowired
 	CustomerRepository customerRepository;
+
+	@Autowired
+	BookingRepository bookingRepository;
 
 	@Test
 	void contextLoads() {
@@ -38,6 +43,9 @@ class CourseBookingApplicationTests {
 		assertEquals(2, courseRepository.findCoursesByBookingsCustomerName("Angelo").size());
 	}
 
-
+	@Test
+	public void canGetBookingsForASpecificDate(){
+		assertEquals(2, bookingRepository.findBookingsByDate("05-11-21").size());
+	}
 
 }
