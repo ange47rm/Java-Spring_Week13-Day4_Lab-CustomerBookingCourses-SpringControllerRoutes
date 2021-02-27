@@ -35,7 +35,7 @@ public class CourseController {
     }
 
     @PostMapping(value = "/courses")
-    public ResponseEntity<Course> createCourse(@RequestBody Course course){
+    public ResponseEntity<Course> postCourse(@RequestBody Course course){
         courseRepository.save(course);
         return new ResponseEntity<>(course, HttpStatus.CREATED);
     }
@@ -59,7 +59,4 @@ public class CourseController {
         return new ResponseEntity(courseToUpdate, HttpStatus.OK); // RETURN UPDATED CUSTOMER OBJECT
 
     }
-
-
-
 }
